@@ -30,8 +30,7 @@ The system implements a multi-stage automated deployment pipeline:
     ```bash
     terraform init
     terraform apply -auto-approve
-    
-```
+    ```
 
 ## Verification & Testing
 
@@ -42,24 +41,21 @@ To test the CI/CD automation:
     ```bash
     echo "v1.0" > app.txt
     zip source.zip app.txt
-    
-```
+    ```
 
 2.  **Trigger the Pipeline:**
     Upload the source zip to the artifact bucket:
     ```bash
     awslocal s3 cp source.zip s3://cicd-pipeline-artifacts-bucket/source.zip
     aws s3 cp source.zip s3://cicd-pipeline-artifacts-bucket/source.zip
-    
-```
+    ```
 
 3.  **Monitor Pipeline Progress:**
     Check the status of the pipeline execution:
     ```bash
     awslocal codepipeline get-pipeline-state --name sysops-automation-pipeline
     aws codepipeline get-pipeline-state --name sysops-automation-pipeline
-    
-```
+    ```
 
 4.  **Confirm Build Output:**
     Once the pipeline finishes, check the S3 bucket for the generated build artifact.
